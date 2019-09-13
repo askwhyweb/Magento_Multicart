@@ -1,0 +1,33 @@
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output'); 
+$_product = $block->getProduct();
+
+$OrviBlock= $block->getLayout()->createBlock('OrviSoft\Multicart\Block\Index\Index');
+
+$_ConfigHelper = $this->helper('OrviSoft\Multicart\Helper\Data');
+
+$attribute_code = $_ConfigHelper->getDefaultConfig('catalog/multicart/multicart');
+if(!empty($attribute_code)){
+    $shoppingCartProducts = $_product->getData($attribute_code);
+    if(!empty($shoppingCartProducts)){
+        $MultiCartSkus = explode(',', $shoppingCartProducts);
+        $multicart_products = [];
+        foreach($MultiCartSkus as $key => $_sku){
+            $_sku = trim($_sku);
+            $id = $OrviBlock->getProductBySku($_sku);
+            if($id){
+                $multicart_products[] = $id->getId();
+            }
+        }
+    }
+    if(empty(implode(',', $multicart_products))){
+        $actionUrl = $block->getSubmitUrl($_product);
+        $shoppingCartProducts = '';
+    }
+}
+
+
+?>
+<?php if(!empty($shoppingCartProducts)): ?>
+<input type="hidden" name="multicart_products" value="<?php echo implode(',', $multicart_products); ?>" />
+<?php endif; ?>

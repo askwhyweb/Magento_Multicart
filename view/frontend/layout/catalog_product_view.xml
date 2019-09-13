@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <referenceContainer name="product.info.form.content">
+            <block class="Magento\Catalog\Block\Product\View" name="multicart_section" template="OrviSoft_Multicart::multicart_injection.phtml" before="product.info.addtocart" />
+        </referenceContainer>
+
+    </body>
+</page>

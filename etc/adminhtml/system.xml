@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="catalog" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<tab>catalog</tab>
+			<resource>OrviSoft_Multicart::config_orvisoft_multicart</resource>
+			<group id="multicart" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>Multicart Configuration</label>
+				<field id="multicart" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+					<label>Select Attribute to look for Multicart</label>
+					<comment/>
+					<source_model>OrviSoft\Multicart\Model\Config\Source\Multicart</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>
