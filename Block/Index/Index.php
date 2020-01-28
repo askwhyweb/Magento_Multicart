@@ -24,7 +24,12 @@ class Index extends \Magento\Framework\View\Element\Template {
 	
 	public function getProductBySku($sku)
 	{
-		return $this->_productRepository->get($sku);
+        try {
+            $product = $this->_productRepository->get($sku);
+        } catch (\Magento\Framework\Exception\NoSuchEntityException $e){
+            $product = false;
+        }
+        return $product;
 	}
 
 }
